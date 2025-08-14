@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Generic Communication Service - Message Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #4a5568;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: #718096;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .rest { color: #38a169; }
+        .rabbitmq { color: #3182ce; }
+        .websocket { color: #d69e2e; }
+        .total { color: #805ad5; }
+
+        .controls {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .control-group label {
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        select, input, button {
+            padding: 10px 15px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        select:focus, input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .auto-refresh {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .auto-refresh input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ✅ Test butonları için CSS */
+        .test-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .test-section h3 {
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .test-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .test-buttons button {
+            background: linear-gradient(45deg, #38a169, #22543d);
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            padding: 12px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            text-transform: none;
+            letter-spacing: normal;
+        }
+
+        .test-buttons button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(56, 161, 105, 0.3);
+        }
+
+        /* ✅ WebSocket test butonları için özel renk */
+        .test-buttons button.websocket-test {
+            background: linear-gradient(45deg, #d69e2e, #975a16);
+        }
+
+        .test-buttons button.websocket-test:hover {
+            box-shadow: 0 8px 25px rgba(214, 158, 46, 0.3);
+        }
+
+        .messages-container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .message-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .message-info {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .protocol-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .protocol-rest {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .protocol-rabbitmq {
+            background: #bee3f8;
+            color: #1a365d;
+        }
+
+        .protocol-websocket {
+            background: #faf089;
+            color: #744210;
+        }
+
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .status-received {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        .status-delivered {
+            background: #bee3f8;
+            color: #1a365d;
+        }
+
+        .status-failed {
+            background: #fed7d7;
+            color: #822727;
+        }
+
+        .status-queued {
+            background: #faf089;
+            color: #744210;
+        }
+
+        .message-content {
+            display: grid;
+            gap: 15px;
+        }
+
+        .message-row {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 10px;
+            align-items: start;
+        }
+
+        .message-label {
+            font-weight: 600;
+            color: #4a5568;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .message-value {
+            background: white;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            word-break: break-all;
+            max-height: 150px;
+            overflow-y: auto;
+        }
+
+        .json-content {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #718096;
+            font-size: 1.1rem;
+        }
+
+        .loading::after {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #e2e8f0;
+            border-top: 3px solid #667eea;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-left: 10px;
+        }
+
+        .no-messages {
+            text-align: center;
+            padding: 60px;
+            color: #718096;
+            font-size: 1.2rem;
+        }
+
+        .error {
+            background: #fed7d7;
+            color: #822727;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .pagination button {
+            padding: 8px 15px;
+            font-size: 0.9rem;
+        }
+
+        .pagination button:disabled {
+            background: #e2e8f0;
+            color: #a0aec0;
+            cursor: not-allowed;
+        }
+
+        .page-info {
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            font-weight: 600;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .control-group {
+                width: 100%;
+            }
+
+            .message-row {
+                grid-template-columns: 1fr;
+                gap: 5px;
+            }
+
+            .message-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .test-buttons {
+                flex-direction: column;
+            }
+
+            .test-buttons button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🚀 Message Dashboard</h1>
+        <p>Generic Communication Service - Real-time Message Monitoring</p>
+    </div>
+
+    <div class="stats-container">
+        <div class="stat-card"><div class="stat-number total" id="totalCount">0</div><div class="stat-label">Toplam Mesaj</div></div>
+        <div class="stat-card"><div class="stat-number rest" id="restCount">0</div><div class="stat-label">REST</div></div>
+        <div class="stat-card"><div class="stat-number rabbitmq" id="rabbitmqCount">0</div><div class="stat-label">RabbitMQ</div></div>
+        <div class="stat-card"><div class="stat-number websocket" id="websocketCount">0</div><div class="stat-label">WebSocket</div></div>
+    </div>
+
+    <div class="controls">
+        <div class="control-group">
+            <label for="protocolFilter">Protokol Filtresi:</label>
+            <select id="protocolFilter">
+                <option value="">Tümü</option>
+                <option value="REST">REST</option>
+                <option value="RABBITMQ">RabbitMQ</option>
+                <option value="WEBSOCKET">WebSocket</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label for="statusFilter">Durum Filtresi:</label>
+            <select id="statusFilter">
+                <option value="">Tümü</option>
+                <option value="RECEIVED">Alındı</option>
+                <option value="DELIVERED">Teslim Edildi</option>
+                <option value="FAILED">Başarısız</option>
+                <option value="QUEUED">Kuyrukta</option>
+                <option value="RETRYING">Yeniden Deniyor</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label for="pageSize">Sayfa Boyutu:</label>
+            <select id="pageSize">
+                <option value="10">10</option>
+                <option value="20" selected>20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label for="refreshInterval">Otomatik Yenileme:</label>
+            <div class="auto-refresh">
+                <input type="checkbox" id="autoRefresh" />
+                <select id="refreshInterval">
+                    <option value="5000">5 saniye</option>
+                    <option value="10000" selected>10 saniye</option>
+                    <option value="30000">30 saniye</option>
+                    <option value="60000">1 dakika</option>
+                </select>
+            </div>
+        </div>
+
+        <button onclick="loadMessages()">🔄 Yenile</button>
+        <button onclick="clearMessages()">🗑️ Temizle</button>
+    </div>
+
+    <!-- ✅ Test Butonları Bölümü (Güncellenmiş) -->
+    <div class="test-section">
+        <h3>🧪 Dashboard Test Butonları</h3>
+        <div class="test-buttons">
+            <!-- REST Test Butonları -->
+            <button onclick="testSelfWebhook()">📤 Self Webhook Test</button>
+            <button onclick="testSelfGet()">📥 Self GET Test</button>
+            <button onclick="testHttpbin()">🌐 HTTPBin Test</button>
+            <button onclick="testJSONPlaceholder()">📋 JSONPlaceholder Test</button>
+
+            <!-- WebSocket Test Butonları -->
+            <button class="websocket-test" onclick="testWebSocketBroadcast()">📡 WebSocket Broadcast Test</button>
+            <button class="websocket-test" onclick="testWebSocketUser()">👤 WebSocket User Test</button>
+            <button class="websocket-test" onclick="testWebSocketChat()">💬 WebSocket Chat Test</button>
+        </div>
+    </div>
+
+    <div class="messages-container">
+        <div id="loading" class="loading" style="display:none;">Mesajlar yükleniyor...</div>
+        <div id="error" class="error" style="display:none;"></div>
+        <div id="messagesContent">
+            <div class="no-messages">Henüz mesaj bulunmuyor. API'ye mesaj göndererek başlayabilirsiniz.</div>
+        </div>
+
+        <div class="pagination" id="pagination" style="display:none;">
+            <button id="prevBtn" onclick="previousPage()">◀ Önceki</button>
+            <div class="page-info" id="pageInfo">Sayfa 1 / 1</div>
+            <button id="nextBtn" onclick="nextPage()">Sonraki ▶</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // === CONFIG ===
+    const API_BASE_URL = window.location.origin + '/api/v1';
+
+    // === STATE ===
+    let currentPage = 0;
+    let totalPages = 0;
+    let autoRefreshInterval = null;
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadMessages();
+        loadStatistics();
+        setupEventListeners();
+    });
+
+    function setupEventListeners() {
+        ['protocolFilter','statusFilter','pageSize'].forEach(id => {
+            document.getElementById(id).addEventListener('change', () => {
+                currentPage = 0;
+                loadMessages();
+            });
+        });
+
+        document.getElementById('autoRefresh').addEventListener('change', function () {
+            this.checked ? startAutoRefresh() : stopAutoRefresh();
+        });
+
+        document.getElementById('refreshInterval').addEventListener('change', function () {
+            if (document.getElementById('autoRefresh').checked) {
+                stopAutoRefresh();
+                startAutoRefresh();
+            }
+        });
+    }
+
+    async function loadMessages() {
+        showLoading();
+        hideError();
+
+        try {
+            const protocol = document.getElementById('protocolFilter').value; // "", REST, RABBITMQ, WEBSOCKET
+            const status   = document.getElementById('statusFilter').value;   // "", RECEIVED, ...
+            const pageSize = document.getElementById('pageSize').value;
+
+            // Base path: protokole göre belirle
+            let base = `${API_BASE_URL}/messages`;
+            if (protocol === 'REST')      base = `${API_BASE_URL}/rest/messages`;
+            else if (protocol === 'RABBITMQ') base = `${API_BASE_URL}/rabbitmq/messages`;
+            else if (protocol === 'WEBSOCKET') base = `${API_BASE_URL}/websocket/messages`;
+
+            // Query params güvenli şekilde inşa et
+            const qs = new URLSearchParams({
+                page: String(currentPage),
+                size: String(pageSize),
+                sortBy: 'timestamp',
+                sortDir: 'desc'
+            });
+            if (status && status.trim() !== '') qs.set('status', status);
+
+            const url = `${base}?${qs.toString()}`;
+            const res = await fetch(url);
+            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+
+            const data = await res.json();
+            displayMessages(data);
+            updatePagination(data);
+
+        } catch (err) {
+            console.error(err);
+            showError('Mesajlar yüklenirken hata oluştu: ' + err.message);
+        } finally {
+            hideLoading();
+        }
+    }
+
+    async function loadStatistics() {
+        try {
+            const res = await fetch(`${API_BASE_URL}/messages/statistics`);
+            if (res.ok) updateStatistics(await res.json());
+        } catch (e) {
+            console.warn('stats error', e);
+        }
+    }
+
+    function displayMessages(data) {
+        const c = document.getElementById('messagesContent');
+        if (!data.content || data.content.length === 0) {
+            c.innerHTML = '<div class="no-messages">Bu filtreye uygun mesaj bulunamadı.</div>';
+            return;
+        }
+        c.innerHTML = data.content.map(m => createMessageHtml(m)).join('');
+    }
+
+    function createMessageHtml(m) {
+        const ts = m.timestamp ? new Date(m.timestamp).toLocaleString('tr-TR') : '';
+        return `
+      <div class="message-item">
+        <div class="message-header">
+          <div class="message-info">
+            <span class="protocol-badge protocol-${(m.protocol||'').toLowerCase()}">${m.protocol||''}</span>
+            <span class="status-badge status-${(m.status||'').toLowerCase()}">${getStatusText(m.status||'')}</span>
+            <span style="color:#718096;font-size:.9rem;">ID: ${m.id||''}</span>
+          </div>
+          <div style="color:#718096;font-size:.9rem;">${ts}</div>
+        </div>
+        <div class="message-content">
+          ${row('Method', m.method)}
+          ${row('URL', m.url)}
+          ${row('Sender', m.sender)}
+          ${row('Group ID', m.groupId)}
+          ${m.headers && Object.keys(m.headers).length ? `
+            <div class="message-row">
+              <div class="message-label">Headers:</div>
+              <div class="json-content">${safeJson(m.headers)}</div>
+            </div>` : '' }
+          ${m.body ? `
+            <div class="message-row">
+              <div class="message-label">Body:</div>
+              <div class="json-content">${formatMessageBody(m.body)}</div>
+            </div>` : '' }
+        </div>
+      </div>`;
+    }
+
+    function row(label, val){
+        if(!val) return '';
+        return `<div class="message-row"><div class="message-label">${label}:</div><div class="message-value">${val}</div></div>`;
+    }
+
+    function safeJson(obj){ try{ return JSON.stringify(obj,null,2);}catch(_){ return String(obj);} }
+    function formatMessageBody(body){ try{ return JSON.stringify(JSON.parse(body),null,2);}catch{ return body; } }
+
+    function getStatusText(s){
+        const map = {
+            RECEIVED:'Alındı',
+            DELIVERED:'Teslim Edildi',
+            FAILED:'Başarısız',
+            QUEUED:'Kuyrukta',
+            RETRYING:'Yeniden Deniyor'
+        };
+        return map[s] || s;
+    }
+
+    function updateStatistics(s) {
+        document.getElementById('totalCount').textContent = s.totalMessages || 0;
+        const p = s.byProtocol || {};
+        document.getElementById('restCount').textContent = p.REST || 0;
+        document.getElementById('rabbitmqCount').textContent = p.RABBITMQ || 0;
+        document.getElementById('websocketCount').textContent = p.WEBSOCKET || 0;
+    }
+
+    function updatePagination(d){
+        totalPages = d.totalPages;
+        currentPage = d.number;
+        const pg = document.getElementById('pagination');
+        const prev = document.getElementById('prevBtn');
+        const next = document.getElementById('nextBtn');
+        const info = document.getElementById('pageInfo');
+
+        if(totalPages > 1){
+            pg.style.display = 'flex';
+            info.textContent = `Sayfa ${currentPage+1} / ${totalPages}`;
+            prev.disabled = currentPage === 0;
+            next.disabled = currentPage >= totalPages - 1;
+        } else {
+            pg.style.display = 'none';
+        }
+    }
+
+    function previousPage(){ if(currentPage>0){ currentPage--; loadMessages(); } }
+    function nextPage(){ if(currentPage<totalPages-1){ currentPage++; loadMessages(); } }
+
+    function startAutoRefresh(){
+        const interval = parseInt(document.getElementById('refreshInterval').value,10);
+        autoRefreshInterval = setInterval(()=>{ loadMessages(); loadStatistics(); }, interval);
+    }
+    function stopAutoRefresh(){ if(autoRefreshInterval){ clearInterval(autoRefreshInterval); autoRefreshInterval=null; } }
+
+    async function clearMessages(){
+        if(!confirm('Tüm mesajları silmek istediğinizden emin misiniz?')) return;
+        try{
+            const res = await fetch(`${API_BASE_URL}/messages`, { method: 'DELETE' });
+            if(!res.ok) throw new Error(`HTTP ${res.status}`);
+            currentPage = 0;
+            await loadMessages();
+            await loadStatistics();
+        }catch(e){ showError('Silme sırasında hata: '+e.message); }
+    }
+
+    // ✅ REST Test Fonksiyonları (Mevcut)
+    async function testSelfWebhook() {
+        try {
+            const testData = {
+                headers: {
+                    url: `${API_BASE_URL}/dashboard/webhook`,
+                    method: "POST",
+                    "Content-Type": "application/json",
+                    sender: "dashboard-self-test",
+                    "group-id": "self-test-group"
+                },
+                body: JSON.stringify({
+                    testType: "self-webhook",
+                    message: "Dashboard kendini test ediyor!",
+                    timestamp: new Date().toISOString(),
+                    data: {
+                        source: "dashboard",
+                        target: "self-webhook"
+                    }
+                })
+            };
+
+            const response = await fetch(`${API_BASE_URL}/rest/send`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(testData)
+            });
+
+            if (response.ok) {
+                alert('✅ Self webhook test başarılı! Mesajlar listesini kontrol edin.');
+                loadMessages();
+                loadStatistics();
+            } else {
+                alert('❌ Self webhook test başarısız!');
+            }
+        } catch (error) {
+            alert('❌ Hata: ' + error.message);
+        }
+    }
+
+    async function testSelfGet() {
+        try {
+            const testData = {
+                headers: {
+                    url: `${API_BASE_URL}/dashboard/test`,
+                    method: "GET",
+                    sender: "dashboard-get-test"
+                }
+            };
+
+            const response = await fetch(`${API_BASE_URL}/rest/send`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(testData)
+            });
+
+            if (response.ok) {
+                alert('✅ Self GET test başarılı!');
+                loadMessages();
+                loadStatistics();
+            } else {
+                alert('❌ Self GET test başarısız!');
+            }
+        } catch (error) {
+            alert('❌ Hata: ' + error.message);
+        }
+    }
+
+    async function testHttpbin() {
+        try {
+            const testData = {
+                headers: {
+                    url: "https://httpbin.org/post",
+                    method: "POST",
+                    "Content-Type": "application/json",
+                    sender: "dashboard-httpbin-test"
+                },
+                body: JSON.stringify({
+                    source: "dashboard",
+                    message: "HTTPBin test from dashboard",
+                    timestamp: new Date().toISOString()
+                })
+            };
+
+            const response = await fetch(`${API_BASE_URL}/rest/send`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(testData)
+            });
+
+            if (response.ok) {
+                alert('✅ HTTPBin test başarılı!');
+                loadMessages();
+                loadStatistics();
+            } else {
+                alert('❌ HTTPBin test başarısız!');
+            }
+        } catch (error) {
+            alert('❌ Hata: ' + error.message);
+        }
+    }
+
+    async function testJSONPlaceholder() {
+        try {
+            const testData = {
+                headers: {
+                    url: "https://jsonplaceholder.typicode.com/posts",
+                    method: "POST",
+                    "Content-Type": "application/json",
+                    sender: "dashboard-json-test"
+                },
+                body: JSON.stringify({
+                    title: "Dashboard Test Post",
+                    body: "Bu bir dashboard test mesajıdır.",
+                    userId: 1
+                })
+            };
+
+            const response = await fetch(`${API_BASE_URL}/rest/send`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(testData)
+            });
+
+            if (response.ok) {
+                alert('✅ JSONPlaceholder test başarılı!');
+                loadMessages();
+                loadStatistics();
+            } else {
+                alert('❌ JSONPlaceholder test başarısız!');
+            }
+        } catch (error) {
+            alert('❌ Hata: ' + error.message);
+        }
+    }
+
+    // ✅ YENİ: WebSocket Test Fonksiyonları
+    async function testWebSocketBroadcast() {
+        try {
+            const testData = {
+                broker: "websocket-local",
+                destination: "/topic/notifications",
+                headers: {
+                    "message-type": "system-notification",
+                    "priority": "high"
+                },
+                payload: JSON.stringify({
+                    type: "broadcast",
+                    message: "Dashboard WebSocket broadcast test mesajı!",
+                    timestamp: new Date().toISOString(),
+                    data: {
+                        source: "dashboard",
+                        testType: "broadcast"
+                    }
+                }),
+                sender: "dashboard-websocket-test",
+                groupId: "dashboard-test-group",
+                messageType: "broadcast"
+            };
+
+            const response = await fetch(`${API_BASE_URL}/websocket/publish`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(testData)
+            });
+
+            if (response.ok) {
+                alert('✅ WebSocket Broadcast test başarılı! Mesajlar listesini kontrol edin.');
+                loadMessages();
+                loadStatistics();
+            } else {
+                alert('❌ WebSocket Broadcast test başarısız!');
+            }
+        } catch (error) {
+            alert('❌ Hata: ' + error.message);
+        }
+    }
+
+    async function testWebSocketUser() {
+        try {
+            const testData = {
+                broker: "websocket-local",
+                destination: "/user/notifications",
+                headers: {
+                    "userId": "123",
+                    "message-type": "personal-notification"
+                },
+                payload: JSON.stringify({
+                    type: "personal",
+                    message: "Dashboard WebSocket user-specific test mesajı!",
+                    userId: 123,
+                    timestamp: new Date().toISOString(),
+                    data: {
+                        notificationId: 456,
+                        category: "test"
+                    }
+                }),
+                sender: "dashboard-user-test",
+                groupId: "user-test-group",
+                messageType: "user-specific"
+            };
+
+            const response = await fetch(`${API_BASE_URL}/websocket/publish`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(testData)
+            });
+
+            if (response.ok) {
+                alert('✅ WebSocket User-specific test başarılı!');
+                loadMessages();
+                loadStatistics();
+            } else {
+                alert('❌ WebSocket User-specific test başarısız!');
+            }
+        } catch (error) {
+            alert('❌ Hata: ' + error.message);
+        }
+    }
+
+    async function testWebSocketChat() {
+        try {
+            const testData = {
+                broker: "websocket-local",
+                destination: "/topic/chat/room-dashboard",
+                headers: {
+                    "chat-room": "room-dashboard",
+                    "message-type": "chat"
+                },
+                payload: JSON.stringify({
+                    userId: 999,
+                    username: "dashboard_bot",
+                    message: "Merhaba! Bu bir dashboard WebSocket chat test mesajıdır.",
+                    timestamp: new Date().toISOString(),
+                    roomId: "room-dashboard"
+                }),
+                sender: "dashboard-chat-test",
+                groupId: "chat-test-group",
+                messageType: "topic"
+            };
+
+            const response = await fetch(`${API_BASE_URL}/websocket/publish`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(testData)
+            });
+
+            if (response.ok) {
+                alert('✅ WebSocket Chat test başarılı!');
+                loadMessages();
+                loadStatistics();
+            } else {
+                alert('❌ WebSocket Chat test başarısız!');
+            }
+        } catch (error) {
+            alert('❌ Hata: ' + error.message);
+        }
+    }
+
+    function showLoading(){ document.getElementById('loading').style.display='block'; }
+    function hideLoading(){ document.getElementById('loading').style.display='none'; }
+    function showError(msg){ const el=document.getElementById('error'); el.textContent=msg; el.style.display='block'; }
+    function hideError(){ document.getElementById('error').style.display='none'; }
+</script>
+</body>
+</html>

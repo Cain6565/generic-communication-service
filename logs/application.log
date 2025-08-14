@@ -1,0 +1,1073 @@
+2025-08-11T10:06:36.359+03:00  INFO 21612 --- [generic-communication-service] [main] g.GenericCommunicationServiceApplication : Starting GenericCommunicationServiceApplication using Java 21.0.7 with PID 21612 (C:\Users\Berfin\IdeaProjects\generic-communication-service\target\classes started by Berfin in C:\Users\Berfin\IdeaProjects\generic-communication-service)
+2025-08-11T10:06:36.362+03:00 DEBUG 21612 --- [generic-communication-service] [main] g.GenericCommunicationServiceApplication : Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-08-11T10:06:36.362+03:00  INFO 21612 --- [generic-communication-service] [main] g.GenericCommunicationServiceApplication : No active profile set, falling back to 1 default profile: "default"
+2025-08-11T10:06:37.826+03:00  INFO 21612 --- [generic-communication-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-08-11T10:06:37.877+03:00  INFO 21612 --- [generic-communication-service] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 3 JPA repository interfaces.
+2025-08-11T10:06:38.330+03:00  INFO 21612 --- [generic-communication-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-08-11T10:06:38.342+03:00  INFO 21612 --- [generic-communication-service] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-08-11T10:06:38.342+03:00  INFO 21612 --- [generic-communication-service] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-08-11T10:06:38.406+03:00  INFO 21612 --- [generic-communication-service] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-08-11T10:06:38.406+03:00  INFO 21612 --- [generic-communication-service] [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2001 ms
+2025-08-11T10:06:38.571+03:00 DEBUG 21612 --- [generic-communication-service] [main] o.s.w.f.CommonsRequestLoggingFilter      : Filter 'requestLoggingFilter' configured for use
+2025-08-11T10:06:38.667+03:00  INFO 21612 --- [generic-communication-service] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-08-11T10:06:38.746+03:00  INFO 21612 --- [generic-communication-service] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-08-11T10:06:38.777+03:00  INFO 21612 --- [generic-communication-service] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-08-11T10:06:39.057+03:00  INFO 21612 --- [generic-communication-service] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-08-11T10:06:39.089+03:00  INFO 21612 --- [generic-communication-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-08-11T10:06:39.305+03:00  INFO 21612 --- [generic-communication-service] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1425e531
+2025-08-11T10:06:39.307+03:00  INFO 21612 --- [generic-communication-service] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-08-11T10:06:39.347+03:00  WARN 21612 --- [generic-communication-service] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-08-11T10:06:39.361+03:00  INFO 21612 --- [generic-communication-service] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 17.3
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-08-11T10:06:40.170+03:00  INFO 21612 --- [generic-communication-service] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-08-11T10:06:40.255+03:00  INFO 21612 --- [generic-communication-service] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-08-11T10:06:40.495+03:00  INFO 21612 --- [generic-communication-service] [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-08-11T10:06:41.703+03:00  INFO 21612 --- [generic-communication-service] [main] o.a.g.s.docker.DockerRabbitManager       : ✅ Docker API bağlantısı başarılı: npipe:////./pipe/dockerDesktopLinuxEngine
+2025-08-11T10:06:42.114+03:00  INFO 21612 --- [generic-communication-service] [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page: class path resource [static/index.html]
+2025-08-11T10:06:42.501+03:00  INFO 21612 --- [generic-communication-service] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 4 endpoints beneath base path '/actuator'
+2025-08-11T10:06:42.577+03:00  INFO 21612 --- [generic-communication-service] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Starting...
+2025-08-11T10:06:42.577+03:00  INFO 21612 --- [generic-communication-service] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=true, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@662438f1]]
+2025-08-11T10:06:42.579+03:00  INFO 21612 --- [generic-communication-service] [main] o.s.m.s.b.SimpleBrokerMessageHandler     : Started.
+2025-08-11T10:06:42.591+03:00  INFO 21612 --- [generic-communication-service] [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-08-11T10:06:42.592+03:00  INFO 21612 --- [generic-communication-service] [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: localhost:5672
+2025-08-11T10:06:42.637+03:00  INFO 21612 --- [generic-communication-service] [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: GCS-Primary/SimpleConnection@ec75805 [delegate=amqp://guest@127.0.0.1:5672/, localPort=62202]
+2025-08-11T10:06:42.693+03:00  INFO 21612 --- [generic-communication-service] [main] g.GenericCommunicationServiceApplication : Started GenericCommunicationServiceApplication in 6.793 seconds (process running for 11.721)
+2025-08-11T10:07:04.629+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-08-11T10:07:04.629+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-08-11T10:07:04.631+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2025-08-11T10:07:04.647+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /swagger-ui/index.html, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:07:04.672+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /swagger-ui/index.html, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:07:04.702+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /swagger-ui/swagger-initializer.js, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:07:04.723+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /swagger-ui/swagger-initializer.js, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:07:04.821+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api-docs/swagger-config, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:07:04.868+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api-docs/swagger-config, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:07:04.890+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api-docs/all, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:07:05.270+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-4] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 366 ms
+2025-08-11T10:07:05.284+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api-docs/all, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:07:42.531+03:00  INFO 21612 --- [generic-communication-service] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 1, active threads = 1, queued tasks = 0, completed tasks = 0]
+2025-08-11T10:08:18.088+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/v1/rabbitmq/brokers, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:08:18.178+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.a.g.service.RabbitMQBrokerService      : 🏗️ Yeni RabbitMQ broker oluşturuluyor: docker-rabbit-1
+2025-08-11T10:08:18.369+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        rme1_0.id 
+    from
+        rabbitmq_brokers rme1_0 
+    where
+        rme1_0.broker_key=? 
+        and rme1_0.is_active 
+    fetch
+        first ? rows only
+2025-08-11T10:08:18.414+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.a.g.service.RabbitMQBrokerService      : 🐳 RabbitMQ Docker container oluşturuluyor: docker-rabbit-1
+2025-08-11T10:08:18.491+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.a.g.s.docker.DockerRabbitManager       : 🔧 RabbitMQ Environment variables: user=admin, vhost=/
+2025-08-11T10:08:18.498+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.a.g.s.docker.DockerRabbitManager       : 🐳 RabbitMQ container oluşturuluyor: rabbitmq-docker-rabbit-1 -> Port: 5674, Management: 15674
+2025-08-11T10:08:19.197+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.a.g.s.docker.DockerRabbitManager       : ✅ RabbitMQ container başarıyla oluşturuldu: rabbitmq-docker-rabbit-1 -> ID: 8fe97957df6b
+2025-08-11T10:08:19.198+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.a.g.s.docker.DockerRabbitManager       : 🔗 RabbitMQ Management UI: http://localhost:15674 (admin:secret123)
+2025-08-11T10:08:19.199+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.a.g.service.RabbitMQBrokerService      : ⏳ RabbitMQ Docker container başlaması bekleniyor...
+2025-08-11T10:08:27.201+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.a.g.service.RabbitMQBrokerService      : 💾 RabbitMQ broker database'e kaydediliyor: docker-rabbit-1
+2025-08-11T10:08:27.201+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.a.g.service.RabbitMQBrokerService      : 💾 RabbitMQ broker kaydediliyor: docker-rabbit-1
+2025-08-11T10:08:27.266+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    insert 
+    into
+        rabbitmq_brokers
+        (broker_key, connection_params, created_at, docker_container_id, docker_container_name, health_status, host, is_active, is_docker_managed, is_primary, last_health_check, management_port, password, port, updated_at, username, virtual_host) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-08-11T10:08:27.325+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.a.g.service.RabbitMQBrokerService      : 🧪 RabbitMQ broker bağlantı testi yapılıyor: docker-rabbit-1
+2025-08-11T10:08:27.325+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.a.g.service.RabbitMQBrokerService      : 🔗 RabbitMQ connection factory oluşturuluyor: localhost:5674
+2025-08-11T10:08:27.327+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: localhost:5674
+2025-08-11T10:08:27.339+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.s.a.r.c.CachingConnectionFactory       : Created new connection: GCS-docker-rabbit-1/SimpleConnection@4f909cf5 [delegate=amqp://admin@127.0.0.1:5674/, localPort=62593]
+2025-08-11T10:08:27.340+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.a.g.service.RabbitMQBrokerService      : ✅ RabbitMQ broker bağlantı testi başarılı: docker-rabbit-1
+2025-08-11T10:08:27.348+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        rme1_0.id,
+        rme1_0.broker_key,
+        rme1_0.connection_params,
+        rme1_0.created_at,
+        rme1_0.docker_container_id,
+        rme1_0.docker_container_name,
+        rme1_0.health_status,
+        rme1_0.host,
+        rme1_0.is_active,
+        rme1_0.is_docker_managed,
+        rme1_0.is_primary,
+        rme1_0.last_health_check,
+        rme1_0.management_port,
+        rme1_0.password,
+        rme1_0.port,
+        rme1_0.updated_at,
+        rme1_0.username,
+        rme1_0.virtual_host 
+    from
+        rabbitmq_brokers rme1_0 
+    where
+        rme1_0.broker_key=?
+2025-08-11T10:08:27.374+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.a.g.service.RabbitMQBrokerService      : 💾 RabbitMQ broker kaydediliyor: docker-rabbit-1
+2025-08-11T10:08:27.390+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        rme1_0.id,
+        rme1_0.broker_key,
+        rme1_0.connection_params,
+        rme1_0.created_at,
+        rme1_0.docker_container_id,
+        rme1_0.docker_container_name,
+        rme1_0.health_status,
+        rme1_0.host,
+        rme1_0.is_active,
+        rme1_0.is_docker_managed,
+        rme1_0.is_primary,
+        rme1_0.last_health_check,
+        rme1_0.management_port,
+        rme1_0.password,
+        rme1_0.port,
+        rme1_0.updated_at,
+        rme1_0.username,
+        rme1_0.virtual_host 
+    from
+        rabbitmq_brokers rme1_0 
+    where
+        rme1_0.id=?
+2025-08-11T10:08:27.407+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    update
+        rabbitmq_brokers 
+    set
+        broker_key=?,
+        connection_params=?,
+        created_at=?,
+        docker_container_id=?,
+        docker_container_name=?,
+        health_status=?,
+        host=?,
+        is_active=?,
+        is_docker_managed=?,
+        is_primary=?,
+        last_health_check=?,
+        management_port=?,
+        password=?,
+        port=?,
+        updated_at=?,
+        username=?,
+        virtual_host=? 
+    where
+        id=?
+2025-08-11T10:08:27.422+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.a.g.service.RabbitMQBrokerService      : ✅ RabbitMQ broker başarıyla oluşturuldu ve test edildi: docker-rabbit-1 -> localhost:5674
+2025-08-11T10:08:27.431+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/v1/rabbitmq/brokers, client=0:0:0:0:0:0:0:1, payload={
+  "brokerKey": "docker-rabbit-1",
+  "autoCreate": true,
+  "port": 5674,
+  "managementPort": 15674,
+  "username": "admin",
+  "password": "secret123",
+  "memoryLimitMb": 512
+}]
+2025-08-11T10:09:59.181+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/v1/rabbitmq/publish, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:09:59.191+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    insert 
+    into
+        messages
+        (body, group_id, headers, method, protocol, sender, status, timestamp, url, version) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-08-11T10:09:59.201+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-8] o.a.g.service.rabbit.RabbitPublisher     : 📤 RabbitMQ mesajı gönderiliyor: broker=rabbitmq-local, queue=notifications
+2025-08-11T10:09:59.201+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-8] o.a.g.service.RabbitMQBrokerService      : 🔍 RabbitMQ broker aranıyor: rabbitmq-local
+2025-08-11T10:09:59.205+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        rme1_0.id,
+        rme1_0.broker_key,
+        rme1_0.connection_params,
+        rme1_0.created_at,
+        rme1_0.docker_container_id,
+        rme1_0.docker_container_name,
+        rme1_0.health_status,
+        rme1_0.host,
+        rme1_0.is_active,
+        rme1_0.is_docker_managed,
+        rme1_0.is_primary,
+        rme1_0.last_health_check,
+        rme1_0.management_port,
+        rme1_0.password,
+        rme1_0.port,
+        rme1_0.updated_at,
+        rme1_0.username,
+        rme1_0.virtual_host 
+    from
+        rabbitmq_brokers rme1_0 
+    where
+        rme1_0.broker_key=? 
+        and rme1_0.is_active
+2025-08-11T10:09:59.209+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-8] o.a.g.service.rabbit.RabbitPublisher     : ✅ RabbitMQ broker bulundu: localhost:5672
+2025-08-11T10:09:59.209+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-8] o.a.g.service.RabbitMQBrokerService      : 🔗 RabbitMQ connection factory oluşturuluyor: localhost:5672
+2025-08-11T10:09:59.215+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-8] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: localhost:5672
+2025-08-11T10:09:59.229+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-8] o.s.a.r.c.CachingConnectionFactory       : Created new connection: GCS-rabbitmq-local/SimpleConnection@2ab14ccd [delegate=amqp://guest@127.0.0.1:5672/, localPort=62944]
+2025-08-11T10:09:59.243+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-8] o.a.g.service.rabbit.RabbitPublisher     : ✅ Queue'ya gönderildi: rabbitmq-local -> notifications
+2025-08-11T10:09:59.247+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        rme1_0.id,
+        rme1_0.broker_key,
+        rme1_0.connection_params,
+        rme1_0.created_at,
+        rme1_0.docker_container_id,
+        rme1_0.docker_container_name,
+        rme1_0.health_status,
+        rme1_0.host,
+        rme1_0.is_active,
+        rme1_0.is_docker_managed,
+        rme1_0.is_primary,
+        rme1_0.last_health_check,
+        rme1_0.management_port,
+        rme1_0.password,
+        rme1_0.port,
+        rme1_0.updated_at,
+        rme1_0.username,
+        rme1_0.virtual_host 
+    from
+        rabbitmq_brokers rme1_0 
+    where
+        rme1_0.broker_key=?
+2025-08-11T10:09:59.249+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-8] o.a.g.service.RabbitMQBrokerService      : 💾 RabbitMQ broker kaydediliyor: rabbitmq-local
+2025-08-11T10:09:59.250+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        rme1_0.id,
+        rme1_0.broker_key,
+        rme1_0.connection_params,
+        rme1_0.created_at,
+        rme1_0.docker_container_id,
+        rme1_0.docker_container_name,
+        rme1_0.health_status,
+        rme1_0.host,
+        rme1_0.is_active,
+        rme1_0.is_docker_managed,
+        rme1_0.is_primary,
+        rme1_0.last_health_check,
+        rme1_0.management_port,
+        rme1_0.password,
+        rme1_0.port,
+        rme1_0.updated_at,
+        rme1_0.username,
+        rme1_0.virtual_host 
+    from
+        rabbitmq_brokers rme1_0 
+    where
+        rme1_0.id=?
+2025-08-11T10:09:59.252+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    update
+        rabbitmq_brokers 
+    set
+        broker_key=?,
+        connection_params=?,
+        created_at=?,
+        docker_container_id=?,
+        docker_container_name=?,
+        health_status=?,
+        host=?,
+        is_active=?,
+        is_docker_managed=?,
+        is_primary=?,
+        last_health_check=?,
+        management_port=?,
+        password=?,
+        port=?,
+        updated_at=?,
+        username=?,
+        virtual_host=? 
+    where
+        id=?
+2025-08-11T10:09:59.256+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-8] o.a.g.service.rabbit.RabbitPublisher     : ✅ RabbitMQ mesajı başarıyla gönderildi: broker=rabbitmq-local, queue=notifications
+2025-08-11T10:09:59.262+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-8] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/v1/rabbitmq/publish, client=0:0:0:0:0:0:0:1, payload={
+  "broker": "rabbitmq-local",
+  "queue": "notifications",
+  "payload": "{\"userId\": 123, \"message\": \"Hello World\"}",
+  "sender": "api-client-1",
+  "groupId": "notification-group"
+}]
+2025-08-11T10:09:59.265+03:00  INFO 21612 --- [generic-communication-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.a.g.s.rabbit.RabbitMessageListener     : 🎧 RabbitMQ mesajı dinlendi: broker=rabbitmq-local, queue=notifications
+2025-08-11T10:09:59.266+03:00 DEBUG 21612 --- [generic-communication-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] org.hibernate.SQL                        : 
+    insert 
+    into
+        messages
+        (body, group_id, headers, method, protocol, sender, status, timestamp, url, version) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-08-11T10:09:59.269+03:00  INFO 21612 --- [generic-communication-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.a.g.s.rabbit.RabbitMessageListener     : ✅ Dinlenen mesaj DB'ye DELIVERED olarak kaydedildi
+2025-08-11T10:12:09.930+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [DELETE /api/v1/rabbitmq/brokers/docker-rabbit-1, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:12:09.930+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.service.RabbitMQBrokerService      : 🗑️ RabbitMQ broker siliniyor: docker-rabbit-1
+2025-08-11T10:12:09.931+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.service.RabbitMQBrokerService      : 🔍 RabbitMQ broker aranıyor: docker-rabbit-1
+2025-08-11T10:12:09.932+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        rme1_0.id,
+        rme1_0.broker_key,
+        rme1_0.connection_params,
+        rme1_0.created_at,
+        rme1_0.docker_container_id,
+        rme1_0.docker_container_name,
+        rme1_0.health_status,
+        rme1_0.host,
+        rme1_0.is_active,
+        rme1_0.is_docker_managed,
+        rme1_0.is_primary,
+        rme1_0.last_health_check,
+        rme1_0.management_port,
+        rme1_0.password,
+        rme1_0.port,
+        rme1_0.updated_at,
+        rme1_0.username,
+        rme1_0.virtual_host 
+    from
+        rabbitmq_brokers rme1_0 
+    where
+        rme1_0.broker_key=? 
+        and rme1_0.is_active
+2025-08-11T10:12:09.934+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.service.RabbitMQBrokerService      : 📋 RabbitMQ broker bilgileri: dockerManaged=true, containerName=rabbitmq-docker-rabbit-1
+2025-08-11T10:12:09.934+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.service.RabbitMQBrokerService      : 🐳 RabbitMQ Docker container siliniyor: docker-rabbit-1 -> docker-rabbit-1
+2025-08-11T10:12:09.954+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.s.docker.DockerRabbitManager       : 🗑️ RabbitMQ container siliniyor: rabbitmq-docker-rabbit-1 (running)
+2025-08-11T10:12:11.665+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.s.docker.DockerRabbitManager       : ⏹️ RabbitMQ container durduruldu: rabbitmq-docker-rabbit-1
+2025-08-11T10:12:11.707+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.s.docker.DockerRabbitManager       : ✅ RabbitMQ container silindi: rabbitmq-docker-rabbit-1
+2025-08-11T10:12:11.708+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.service.RabbitMQBrokerService      : 🐳 RabbitMQ Docker container silme sonucu: true
+2025-08-11T10:12:11.708+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.service.RabbitMQBrokerService      : 💾 RabbitMQ broker database'den siliniyor: docker-rabbit-1
+2025-08-11T10:12:11.713+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        rme1_0.id,
+        rme1_0.broker_key,
+        rme1_0.connection_params,
+        rme1_0.created_at,
+        rme1_0.docker_container_id,
+        rme1_0.docker_container_name,
+        rme1_0.health_status,
+        rme1_0.host,
+        rme1_0.is_active,
+        rme1_0.is_docker_managed,
+        rme1_0.is_primary,
+        rme1_0.last_health_check,
+        rme1_0.management_port,
+        rme1_0.password,
+        rme1_0.port,
+        rme1_0.updated_at,
+        rme1_0.username,
+        rme1_0.virtual_host 
+    from
+        rabbitmq_brokers rme1_0 
+    where
+        rme1_0.broker_key=?
+2025-08-11T10:12:11.718+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.service.RabbitMQBrokerService      : 🗑️ Docker RabbitMQ broker tamamen siliniyor: docker-rabbit-1
+2025-08-11T10:12:11.723+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        rme1_0.id,
+        rme1_0.broker_key,
+        rme1_0.connection_params,
+        rme1_0.created_at,
+        rme1_0.docker_container_id,
+        rme1_0.docker_container_name,
+        rme1_0.health_status,
+        rme1_0.host,
+        rme1_0.is_active,
+        rme1_0.is_docker_managed,
+        rme1_0.is_primary,
+        rme1_0.last_health_check,
+        rme1_0.management_port,
+        rme1_0.password,
+        rme1_0.port,
+        rme1_0.updated_at,
+        rme1_0.username,
+        rme1_0.virtual_host 
+    from
+        rabbitmq_brokers rme1_0 
+    where
+        rme1_0.id=?
+2025-08-11T10:12:11.744+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    delete 
+    from
+        rabbitmq_brokers 
+    where
+        id=?
+2025-08-11T10:12:11.751+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.service.RabbitMQBrokerService      : ✅ RabbitMQ broker başarıyla silindi: docker-rabbit-1
+2025-08-11T10:12:11.753+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [DELETE /api/v1/rabbitmq/brokers/docker-rabbit-1, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:12:49.852+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/v1/rabbitmq/messages?page=0&size=20&sortBy=timestamp&sortDir=desc, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:12:49.867+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        me1_0.id,
+        me1_0.body,
+        me1_0.group_id,
+        me1_0.headers,
+        me1_0.method,
+        me1_0.protocol,
+        me1_0.sender,
+        me1_0.status,
+        me1_0.timestamp,
+        me1_0.url,
+        me1_0.version 
+    from
+        messages me1_0 
+    where
+        me1_0.protocol=? 
+    order by
+        me1_0.timestamp desc 
+    fetch
+        first ? rows only
+2025-08-11T10:12:49.883+03:00  WARN 21612 --- [generic-communication-service] [http-nio-8080-exec-2] ration$PageModule$WarningLoggingModifier : Serializing PageImpl instances as-is is not supported, meaning that there is no guarantee about the stability of the resulting JSON structure!
+	For a stable JSON structure, please use Spring Data's PagedModel (globally via @EnableSpringDataWebSupport(pageSerializationMode = VIA_DTO))
+	or Spring HATEOAS and Spring Data's PagedResourcesAssembler as documented in https://docs.spring.io/spring-data/commons/reference/repositories/core-extensions.html#core.web.pageables.
+
+2025-08-11T10:12:49.893+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/v1/rabbitmq/messages?page=0&size=20&sortBy=timestamp&sortDir=desc, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:13:03.150+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/v1/rest/send, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:13:03.161+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    insert 
+    into
+        messages
+        (body, group_id, headers, method, protocol, sender, status, timestamp, url, version) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-08-11T10:13:03.165+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-3] o.a.g.service.http.HttpRelaySender       : HTTP mesajı gönderiliyor: POST -> http://localhost:8081/api/webhook
+2025-08-11T10:13:03.241+03:00 ERROR 21612 --- [generic-communication-service] [http-nio-8080-exec-3] o.a.g.service.http.HttpRelaySender       : HTTP çağrısı bağlantı hatası: I/O error on POST request for "http://localhost:8081/api/webhook": Connect to http://localhost:8081 failed: Connection refused: getsockopt
+2025-08-11T10:13:03.250+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        me1_0.id,
+        me1_0.body,
+        me1_0.group_id,
+        me1_0.headers,
+        me1_0.method,
+        me1_0.protocol,
+        me1_0.sender,
+        me1_0.status,
+        me1_0.timestamp,
+        me1_0.url,
+        me1_0.version 
+    from
+        messages me1_0 
+    where
+        me1_0.id=?
+2025-08-11T10:13:03.256+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        me1_0.id,
+        me1_0.body,
+        me1_0.group_id,
+        me1_0.headers,
+        me1_0.method,
+        me1_0.protocol,
+        me1_0.sender,
+        me1_0.status,
+        me1_0.timestamp,
+        me1_0.url,
+        me1_0.version 
+    from
+        messages me1_0 
+    where
+        me1_0.id=?
+2025-08-11T10:13:03.260+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    update
+        messages 
+    set
+        body=?,
+        group_id=?,
+        headers=?,
+        method=?,
+        protocol=?,
+        sender=?,
+        status=?,
+        timestamp=?,
+        url=?,
+        version=? 
+    where
+        id=?
+2025-08-11T10:13:03.264+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        me1_0.id,
+        me1_0.body,
+        me1_0.group_id,
+        me1_0.headers,
+        me1_0.method,
+        me1_0.protocol,
+        me1_0.sender,
+        me1_0.status,
+        me1_0.timestamp,
+        me1_0.url,
+        me1_0.version 
+    from
+        messages me1_0 
+    where
+        me1_0.id=?
+2025-08-11T10:13:03.267+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    update
+        messages 
+    set
+        body=?,
+        group_id=?,
+        headers=?,
+        method=?,
+        protocol=?,
+        sender=?,
+        status=?,
+        timestamp=?,
+        url=?,
+        version=? 
+    where
+        id=?
+2025-08-11T10:13:03.273+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/v1/rest/send, client=0:0:0:0:0:0:0:1, payload={
+  "headers": {
+    "url": "http://localhost:8081/api/webhook",
+    "method": "POST",
+    "Content-Type": "application/json",
+    "X-Trace-Id": "abc123",
+    "sender": "rest-client-1",
+    "group-id": "notification-group"
+  },
+  "body": "{\"message\": \"Hello World\", \"timestamp\": \"2024-01-01T12:00:00Z\"}"
+}]
+2025-08-11T10:13:08.788+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/v1/rest/messages?page=0&size=20&sortBy=timestamp&sortDir=desc, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:13:08.793+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        me1_0.id,
+        me1_0.body,
+        me1_0.group_id,
+        me1_0.headers,
+        me1_0.method,
+        me1_0.protocol,
+        me1_0.sender,
+        me1_0.status,
+        me1_0.timestamp,
+        me1_0.url,
+        me1_0.version 
+    from
+        messages me1_0 
+    where
+        me1_0.protocol=? 
+    order by
+        me1_0.timestamp desc 
+    fetch
+        first ? rows only
+2025-08-11T10:13:08.801+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/v1/rest/messages?page=0&size=20&sortBy=timestamp&sortDir=desc, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:13:33.279+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/v1/rest/send, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:13:33.283+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    insert 
+    into
+        messages
+        (body, group_id, headers, method, protocol, sender, status, timestamp, url, version) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-08-11T10:13:33.286+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-9] o.a.g.service.http.HttpRelaySender       : HTTP mesajı gönderiliyor: POST -> http://localhost:8080/api/webhook
+2025-08-11T10:13:33.290+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/webhook, client=127.0.0.1]
+2025-08-11T10:13:33.300+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-7] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/webhook, client=127.0.0.1]
+2025-08-11T10:13:33.339+03:00 ERROR 21612 --- [generic-communication-service] [http-nio-8080-exec-9] o.a.g.service.http.HttpRelaySender       : HTTP çağrısı 4xx hatası: 404 NOT_FOUND -> {"timestamp":"2025-08-11T07:13:33.316+00:00","status":404,"error":"Not Found","path":"/api/webhook"}
+2025-08-11T10:13:33.340+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        me1_0.id,
+        me1_0.body,
+        me1_0.group_id,
+        me1_0.headers,
+        me1_0.method,
+        me1_0.protocol,
+        me1_0.sender,
+        me1_0.status,
+        me1_0.timestamp,
+        me1_0.url,
+        me1_0.version 
+    from
+        messages me1_0 
+    where
+        me1_0.id=?
+2025-08-11T10:13:33.343+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        me1_0.id,
+        me1_0.body,
+        me1_0.group_id,
+        me1_0.headers,
+        me1_0.method,
+        me1_0.protocol,
+        me1_0.sender,
+        me1_0.status,
+        me1_0.timestamp,
+        me1_0.url,
+        me1_0.version 
+    from
+        messages me1_0 
+    where
+        me1_0.id=?
+2025-08-11T10:13:33.345+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    update
+        messages 
+    set
+        body=?,
+        group_id=?,
+        headers=?,
+        method=?,
+        protocol=?,
+        sender=?,
+        status=?,
+        timestamp=?,
+        url=?,
+        version=? 
+    where
+        id=?
+2025-08-11T10:13:33.347+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        me1_0.id,
+        me1_0.body,
+        me1_0.group_id,
+        me1_0.headers,
+        me1_0.method,
+        me1_0.protocol,
+        me1_0.sender,
+        me1_0.status,
+        me1_0.timestamp,
+        me1_0.url,
+        me1_0.version 
+    from
+        messages me1_0 
+    where
+        me1_0.id=?
+2025-08-11T10:13:33.350+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    update
+        messages 
+    set
+        body=?,
+        group_id=?,
+        headers=?,
+        method=?,
+        protocol=?,
+        sender=?,
+        status=?,
+        timestamp=?,
+        url=?,
+        version=? 
+    where
+        id=?
+2025-08-11T10:13:33.354+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/v1/rest/send, client=0:0:0:0:0:0:0:1, payload={
+  "headers": {
+    "url": "http://localhost:8080/api/webhook",
+    "method": "POST",
+    "Content-Type": "application/json",
+    "X-Trace-Id": "abc123",
+    "sender": "rest-client-1",
+    "group-id": "notification-group"
+  },
+  "body": "{\"message\": \"Hello World\", \"timestamp\": \"2024-01-01T12:00:00Z\"}"
+}]
+2025-08-11T10:13:44.491+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/v1/rest/messages?page=0&size=20&sortBy=timestamp&sortDir=desc, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:13:44.497+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        me1_0.id,
+        me1_0.body,
+        me1_0.group_id,
+        me1_0.headers,
+        me1_0.method,
+        me1_0.protocol,
+        me1_0.sender,
+        me1_0.status,
+        me1_0.timestamp,
+        me1_0.url,
+        me1_0.version 
+    from
+        messages me1_0 
+    where
+        me1_0.protocol=? 
+    order by
+        me1_0.timestamp desc 
+    fetch
+        first ? rows only
+2025-08-11T10:13:44.506+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/v1/rest/messages?page=0&size=20&sortBy=timestamp&sortDir=desc, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:15:16.274+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/v1/websocket/publish, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:15:16.284+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    insert 
+    into
+        messages
+        (body, group_id, headers, method, protocol, sender, status, timestamp, url, version) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-08-11T10:15:16.293+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.service.websocket.WebSocketSender  : 📡 WebSocket mesajı gönderiliyor: broker=websocket-local, destination=/topic/notifications
+2025-08-11T10:15:16.294+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.s.w.WebSocketBrokerService         : 🔍 WebSocket broker aranıyor: websocket-local
+2025-08-11T10:15:16.298+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        wsbe1_0.id,
+        wsbe1_0.broker_key,
+        wsbe1_0.connection_params,
+        wsbe1_0.created_at,
+        wsbe1_0.endpoint_url,
+        wsbe1_0.health_status,
+        wsbe1_0.heartbeat_interval,
+        wsbe1_0.is_active,
+        wsbe1_0.is_primary,
+        wsbe1_0.last_health_check,
+        wsbe1_0.max_connections,
+        wsbe1_0.protocol_type,
+        wsbe1_0.updated_at 
+    from
+        websocket_brokers wsbe1_0 
+    where
+        wsbe1_0.broker_key=? 
+        and wsbe1_0.is_active
+2025-08-11T10:15:16.317+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.service.websocket.WebSocketSender  : ✅ WebSocket broker bulundu: ws://localhost:8080/ws
+2025-08-11T10:15:16.330+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.service.websocket.WebSocketSender  : 📤 Topic mesajı gönderildi: /topic/notifications
+2025-08-11T10:15:16.334+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        wsbe1_0.id,
+        wsbe1_0.broker_key,
+        wsbe1_0.connection_params,
+        wsbe1_0.created_at,
+        wsbe1_0.endpoint_url,
+        wsbe1_0.health_status,
+        wsbe1_0.heartbeat_interval,
+        wsbe1_0.is_active,
+        wsbe1_0.is_primary,
+        wsbe1_0.last_health_check,
+        wsbe1_0.max_connections,
+        wsbe1_0.protocol_type,
+        wsbe1_0.updated_at 
+    from
+        websocket_brokers wsbe1_0 
+    where
+        wsbe1_0.broker_key=?
+2025-08-11T10:15:16.338+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.s.w.WebSocketBrokerService         : 💾 WebSocket broker kaydediliyor: websocket-local
+2025-08-11T10:15:16.341+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        wsbe1_0.id,
+        wsbe1_0.broker_key,
+        wsbe1_0.connection_params,
+        wsbe1_0.created_at,
+        wsbe1_0.endpoint_url,
+        wsbe1_0.health_status,
+        wsbe1_0.heartbeat_interval,
+        wsbe1_0.is_active,
+        wsbe1_0.is_primary,
+        wsbe1_0.last_health_check,
+        wsbe1_0.max_connections,
+        wsbe1_0.protocol_type,
+        wsbe1_0.updated_at 
+    from
+        websocket_brokers wsbe1_0 
+    where
+        wsbe1_0.id=?
+2025-08-11T10:15:16.346+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    update
+        websocket_brokers 
+    set
+        broker_key=?,
+        connection_params=?,
+        created_at=?,
+        endpoint_url=?,
+        health_status=?,
+        heartbeat_interval=?,
+        is_active=?,
+        is_primary=?,
+        last_health_check=?,
+        max_connections=?,
+        protocol_type=?,
+        updated_at=? 
+    where
+        id=?
+2025-08-11T10:15:16.350+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.service.websocket.WebSocketSender  : ✅ WebSocket mesajı başarıyla gönderildi: destination=/topic/notifications
+2025-08-11T10:15:16.351+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        me1_0.id,
+        me1_0.body,
+        me1_0.group_id,
+        me1_0.headers,
+        me1_0.method,
+        me1_0.protocol,
+        me1_0.sender,
+        me1_0.status,
+        me1_0.timestamp,
+        me1_0.url,
+        me1_0.version 
+    from
+        messages me1_0 
+    where
+        me1_0.id=?
+2025-08-11T10:15:16.356+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        me1_0.id,
+        me1_0.body,
+        me1_0.group_id,
+        me1_0.headers,
+        me1_0.method,
+        me1_0.protocol,
+        me1_0.sender,
+        me1_0.status,
+        me1_0.timestamp,
+        me1_0.url,
+        me1_0.version 
+    from
+        messages me1_0 
+    where
+        me1_0.id=?
+2025-08-11T10:15:16.360+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    update
+        messages 
+    set
+        body=?,
+        group_id=?,
+        headers=?,
+        method=?,
+        protocol=?,
+        sender=?,
+        status=?,
+        timestamp=?,
+        url=?,
+        version=? 
+    where
+        id=?
+2025-08-11T10:15:16.365+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/v1/websocket/publish, client=0:0:0:0:0:0:0:1, payload={
+  "broker": "websocket-local",
+  "destination": "/topic/notifications",
+  "headers": {
+    "message-type": "system-notification",
+    "priority": "high"
+  },
+  "payload": "{\"type\": \"broadcast\", \"message\": \"Sistem bakımı 5 dakika sonra başlayacak\", \"timestamp\": \"2024-01-01T12:00:00Z\"}",
+  "sender": "websocket-client-1",
+  "groupId": "system-notifications",
+  "messageType": "broadcast"
+}]
+2025-08-11T10:16:59.275+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/v1/rest/send, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:16:59.277+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    insert 
+    into
+        messages
+        (body, group_id, headers, method, protocol, sender, status, timestamp, url, version) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-08-11T10:16:59.289+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-3] o.a.g.service.http.HttpRelaySender       : HTTP mesajı gönderiliyor: POST -> http://localhost:8080/api/webhook
+2025-08-11T10:16:59.297+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/webhook, client=127.0.0.1]
+2025-08-11T10:16:59.304+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-4] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/webhook, client=127.0.0.1]
+2025-08-11T10:16:59.309+03:00 ERROR 21612 --- [generic-communication-service] [http-nio-8080-exec-3] o.a.g.service.http.HttpRelaySender       : HTTP çağrısı 4xx hatası: 404 NOT_FOUND -> {"timestamp":"2025-08-11T07:16:59.306+00:00","status":404,"error":"Not Found","path":"/api/webhook"}
+2025-08-11T10:16:59.311+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        me1_0.id,
+        me1_0.body,
+        me1_0.group_id,
+        me1_0.headers,
+        me1_0.method,
+        me1_0.protocol,
+        me1_0.sender,
+        me1_0.status,
+        me1_0.timestamp,
+        me1_0.url,
+        me1_0.version 
+    from
+        messages me1_0 
+    where
+        me1_0.id=?
+2025-08-11T10:16:59.316+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        me1_0.id,
+        me1_0.body,
+        me1_0.group_id,
+        me1_0.headers,
+        me1_0.method,
+        me1_0.protocol,
+        me1_0.sender,
+        me1_0.status,
+        me1_0.timestamp,
+        me1_0.url,
+        me1_0.version 
+    from
+        messages me1_0 
+    where
+        me1_0.id=?
+2025-08-11T10:16:59.321+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    update
+        messages 
+    set
+        body=?,
+        group_id=?,
+        headers=?,
+        method=?,
+        protocol=?,
+        sender=?,
+        status=?,
+        timestamp=?,
+        url=?,
+        version=? 
+    where
+        id=?
+2025-08-11T10:16:59.326+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        me1_0.id,
+        me1_0.body,
+        me1_0.group_id,
+        me1_0.headers,
+        me1_0.method,
+        me1_0.protocol,
+        me1_0.sender,
+        me1_0.status,
+        me1_0.timestamp,
+        me1_0.url,
+        me1_0.version 
+    from
+        messages me1_0 
+    where
+        me1_0.id=?
+2025-08-11T10:16:59.329+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    update
+        messages 
+    set
+        body=?,
+        group_id=?,
+        headers=?,
+        method=?,
+        protocol=?,
+        sender=?,
+        status=?,
+        timestamp=?,
+        url=?,
+        version=? 
+    where
+        id=?
+2025-08-11T10:16:59.337+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-3] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/v1/rest/send, client=0:0:0:0:0:0:0:1, payload={
+  "headers": {
+    "url": "http://localhost:8080/api/webhook",
+    "method": "POST",
+    "Content-Type": "application/json",
+    "X-Trace-Id": "abc123",
+    "sender": "rest-client-1",
+    "group-id": "notification-group"
+  },
+  "body": "{\"message\": \"Hello World\", \"timestamp\": \"2024-01-01T12:00:00Z\"}"
+}]
+2025-08-11T10:24:19.256+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/v1/rest/messages?page=0&size=20&sortBy=timestamp&sortDir=desc, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:24:19.261+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        me1_0.id,
+        me1_0.body,
+        me1_0.group_id,
+        me1_0.headers,
+        me1_0.method,
+        me1_0.protocol,
+        me1_0.sender,
+        me1_0.status,
+        me1_0.timestamp,
+        me1_0.url,
+        me1_0.version 
+    from
+        messages me1_0 
+    where
+        me1_0.protocol=? 
+    order by
+        me1_0.timestamp desc 
+    fetch
+        first ? rows only
+2025-08-11T10:24:19.266+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-9] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/v1/rest/messages?page=0&size=20&sortBy=timestamp&sortDir=desc, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:24:20.782+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : Before request [GET /api/v1/rest/messages?page=0&size=20&sortBy=timestamp&sortDir=desc, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:24:20.790+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        me1_0.id,
+        me1_0.body,
+        me1_0.group_id,
+        me1_0.headers,
+        me1_0.method,
+        me1_0.protocol,
+        me1_0.sender,
+        me1_0.status,
+        me1_0.timestamp,
+        me1_0.url,
+        me1_0.version 
+    from
+        messages me1_0 
+    where
+        me1_0.protocol=? 
+    order by
+        me1_0.timestamp desc 
+    fetch
+        first ? rows only
+2025-08-11T10:24:20.804+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-10] o.s.w.f.CommonsRequestLoggingFilter      : After request [GET /api/v1/rest/messages?page=0&size=20&sortBy=timestamp&sortDir=desc, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:26:37.439+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/v1/rest/send, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:26:37.445+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-5] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/v1/rest/send, client=0:0:0:0:0:0:0:1, payload=curl -X 'POST' \
+  'http://localhost:8080/api/v1/rest/send' \
+  -H 'accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "headers": {
+    "url": "https://jsonplaceholder.typicode.com/posts",
+    "method": "POST",
+    "Content-Type": "application/json",
+    "sender": "rest-client-1"
+  },
+  "body": "{\"title\": \"Test Post\", \"body\": \"Test message\", \"userId\": 1}"
+}']
+2025-08-11T10:28:22.378+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/v1/rest/send, client=0:0:0:0:0:0:0:1]
+2025-08-11T10:28:22.380+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    insert 
+    into
+        messages
+        (body, group_id, headers, method, protocol, sender, status, timestamp, url, version) 
+    values
+        (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+2025-08-11T10:28:22.392+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.service.http.HttpRelaySender       : HTTP mesajı gönderiliyor: POST -> http://localhost:8080/api/v1/dashboard/webhook
+2025-08-11T10:28:22.398+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : Before request [POST /api/v1/dashboard/webhook, client=127.0.0.1]
+2025-08-11T10:28:22.401+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-2] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/v1/dashboard/webhook, client=127.0.0.1, payload={"message": "Hello World", "timestamp": "2024-01-01T12:00:00Z"}]
+2025-08-11T10:28:22.404+03:00  INFO 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.a.g.service.http.HttpRelaySender       : HTTP çağrısı başarılı: 200 OK - http://localhost:8080/api/v1/dashboard/webhook
+2025-08-11T10:28:22.405+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        me1_0.id,
+        me1_0.body,
+        me1_0.group_id,
+        me1_0.headers,
+        me1_0.method,
+        me1_0.protocol,
+        me1_0.sender,
+        me1_0.status,
+        me1_0.timestamp,
+        me1_0.url,
+        me1_0.version 
+    from
+        messages me1_0 
+    where
+        me1_0.id=?
+2025-08-11T10:28:22.409+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        me1_0.id,
+        me1_0.body,
+        me1_0.group_id,
+        me1_0.headers,
+        me1_0.method,
+        me1_0.protocol,
+        me1_0.sender,
+        me1_0.status,
+        me1_0.timestamp,
+        me1_0.url,
+        me1_0.version 
+    from
+        messages me1_0 
+    where
+        me1_0.id=?
+2025-08-11T10:28:22.412+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    update
+        messages 
+    set
+        body=?,
+        group_id=?,
+        headers=?,
+        method=?,
+        protocol=?,
+        sender=?,
+        status=?,
+        timestamp=?,
+        url=?,
+        version=? 
+    where
+        id=?
+2025-08-11T10:28:22.418+03:00 DEBUG 21612 --- [generic-communication-service] [http-nio-8080-exec-1] o.s.w.f.CommonsRequestLoggingFilter      : After request [POST /api/v1/rest/send, client=0:0:0:0:0:0:0:1, payload={
+  "headers": {
+    "url": "http://localhost:8080/api/v1/dashboard/webhook",
+    "method": "POST",
+    "Content-Type": "application/json",
+    "X-Trace-Id": "abc123",
+    "sender": "rest-client-1",
+    "group-id": "notification-group"
+  },
+  "body": "{\"message\": \"Hello World\", \"timestamp\": \"2024-01-01T12:00:00Z\"}"
+}]
+2025-08-11T10:37:42.532+03:00  INFO 21612 --- [generic-communication-service] [MessageBroker-1] o.s.w.s.c.WebSocketMessageBrokerStats    : WebSocketSession[0 current WS(0)-HttpStream(0)-HttpPoll(0), 0 total, 0 closed abnormally (0 connect failure, 0 send limit, 0 transport error)], stompSubProtocol[processed CONNECT(0)-CONNECTED(0)-DISCONNECT(0)], stompBrokerRelay[null], inboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], outboundChannel[pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 0], sockJsScheduler[pool size = 2, active threads = 1, queued tasks = 0, completed tasks = 1]
+2025-08-11T10:52:04.478+03:00  INFO 21612 --- [generic-communication-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2025-08-11T10:52:04.959+03:00  INFO 21612 --- [generic-communication-service] [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2025-08-11T10:52:04.961+03:00  INFO 21612 --- [generic-communication-service] [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown        : Commencing graceful shutdown. Waiting for active requests to complete
+2025-08-11T10:52:04.983+03:00  INFO 21612 --- [generic-communication-service] [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown        : Graceful shutdown complete
+2025-08-11T10:52:04.998+03:00  INFO 21612 --- [generic-communication-service] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopping...
+2025-08-11T10:52:04.999+03:00  INFO 21612 --- [generic-communication-service] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : BrokerAvailabilityEvent[available=false, SimpleBrokerMessageHandler [org.springframework.messaging.simp.broker.DefaultSubscriptionRegistry@662438f1]]
+2025-08-11T10:52:04.999+03:00  INFO 21612 --- [generic-communication-service] [SpringApplicationShutdownHook] o.s.m.s.b.SimpleBrokerMessageHandler     : Stopped.
+2025-08-11T10:52:05.019+03:00  INFO 21612 --- [generic-communication-service] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-08-11T10:52:05.025+03:00  INFO 21612 --- [generic-communication-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-08-11T10:52:05.027+03:00  INFO 21612 --- [generic-communication-service] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
