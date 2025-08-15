@@ -151,7 +151,7 @@ org.argela.genericcommunicationservice/
 ├── entity/                                         ← JPA Entities
 │   ├── MessageEntity.java                         ← Mesaj tablosu
 │   ├── RabbitMQBrokerEntity.java                 ← RabbitMQ broker tablosu
-│   └── WebSocketBrokerEntity.java                ← WebSocket broker tablosu
+│   └── WebSocketEntity.java                      ← WebSocket entity tablosu
 ├── enums/                                          ← Enum Classes
 │   ├── MessageStatus.java                         ← Mesaj durumları
 │   └── ProtocolType.java                          ← Protokol tipleri
@@ -163,7 +163,7 @@ org.argela.genericcommunicationservice/
 ├── repository/                                     ← Data Access Layer
 │   ├── MessageRepository.java                     ← Mesaj veritabanı işlemleri
 │   ├── RabbitMQBrokerRepository.java             ← RabbitMQ broker CRUD
-│   └── WebSocketBrokerRepository.java            ← WebSocket broker CRUD
+│   └── WebSocketRepository.java                  ← WebSocket repository CRUD
 └── service/                                        ← Business Logic
     ├── MessageService.java                         ← Mesaj servisi interface
     ├── RabbitMQBrokerService.java                 ← RabbitMQ broker yönetimi
@@ -177,7 +177,7 @@ org.argela.genericcommunicationservice/
     │   ├── RabbitMessageListener.java             ← RabbitMQ mesaj dinleyici
     │   └── RabbitPublisher.java                   ← RabbitMQ mesaj gönderici
     └── websocket/
-        ├── WebSocketBrokerService.java            ← WebSocket broker yönetimi
+        ├── WebSocketService.java                  ← WebSocket service yönetimi
         └── WebSocketSender.java                   ← WebSocket mesaj gönderici
 ```
 
@@ -415,8 +415,8 @@ public enum HealthStatus {
 }
 ```
 
-#### WebSocketBrokerEntity.java (14-71)
-**Amaç**: WebSocket broker endpoint'lerini yönetir
+#### WebSocketEntity.java (14-71)
+**Amaç**: WebSocket entity bilgilerini yönetir
 
 **Önemli Alanlar**:
 ```java
@@ -1013,23 +1013,23 @@ public RabbitSendResult publish(RabbitSendDto dto) {
 
 ### WebSocket Broker Management
 
-#### WebSocketBrokerService.java
+#### WebSocketService.java
 ```java
-public WebSocketBrokerEntity findActiveBrokerByKey(String brokerKey) {
-    return webSocketBrokerRepository.findByBrokerKeyAndIsActiveTrue(brokerKey)
+public WebSocketEntity findActiveBrokerByKey(String brokerKey) {
+    return webSocketRepository.findByBrokerKeyAndIsActiveTrue(brokerKey)
         .orElseThrow(() -> new BrokerNotFoundException("WebSocket broker not found: " + brokerKey));
 }
 
 public boolean isBrokerAvailable(String brokerKey) {
     try {
-        WebSocketBrokerEntity broker = findActiveBrokerByKey(brokerKey);
+        WebSocketEntity broker = findActiveBrokerByKey(brokerKey);
         // WebSocket broker availability check
         boolean available = checkWebSocketEndpoint(broker.getEndpointUrl());
         
         // Health status güncelle
-        WebSocketBrokerEntity.HealthStatus status = available ? 
-            WebSocketBrokerEntity.HealthStatus.ONLINE : 
-            WebSocketBrokerEntity.HealthStatus.OFFLINE;
+        WebSocketEntity.HealthStatus status = available ? 
+            WebSocketEntity.HealthStatus.ONLINE : 
+            WebSocketEntity.HealthStatus.OFFLINE;
             
         updateBrokerHealth(brokerKey, status);
         return available;
