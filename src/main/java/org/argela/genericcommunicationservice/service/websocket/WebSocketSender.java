@@ -3,7 +3,7 @@ package org.argela.genericcommunicationservice.service.websocket;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.argela.genericcommunicationservice.dto.WebSocketSendDto;
-import org.argela.genericcommunicationservice.entity.WebSocketBrokerEntity;
+import org.argela.genericcommunicationservice.entity.WebSocketEntity;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
@@ -19,19 +19,19 @@ import java.util.Map;
 public class WebSocketSender {
 
     private final SimpMessagingTemplate simpMessagingTemplate;
-    private final WebSocketBrokerService webSocketBrokerService;
+    private final WebSocketService webSocketService;
 
     /**
      * WebSocket mesajını gönderir
      */
     public WebSocketSendResult send(WebSocketSendDto dto) {
-        log.info("📡 WebSocket mesajı gönderiliyor: broker={}, destination={}",
-                dto.getBroker(), dto.getDestination());
+        log.info("📡 WebSocket mesajı gönderiliyor: websocket={}, destination={}",
+                dto.getWebsocket(), dto.getDestination());
 
         try {
-            // 1. Broker doğrulama (database'den)
-            WebSocketBrokerEntity broker = webSocketBrokerService.findActiveBrokerByKey(dto.getBroker());
-            log.debug("✅ WebSocket broker bulundu: {}", broker.getEndpointUrl());
+            // 1. WebSocket doğrulama (database'den)
+            WebSocketEntity webSocket = webSocketService.findActiveByKey(dto.getWebsocket());
+            log.debug("✅ WebSocket bulundu: {}", webSocket.getEndpointUrl());
 
             // 2. Mesaj tipine göre gönderim
             switch (dto.getMessageType() != null ? dto.getMessageType().toLowerCase() : "broadcast") {
@@ -40,24 +40,24 @@ public class WebSocketSender {
                 default -> sendToDestination(dto);
             }
 
-            // 3. Broker health durumunu güncelle
-            webSocketBrokerService.updateBrokerHealth(dto.getBroker(), WebSocketBrokerEntity.HealthStatus.ONLINE);
+            // 3. WebSocket health durumunu güncelle
+            webSocketService.updateHealth(dto.getWebsocket(), WebSocketEntity.HealthStatus.ONLINE);
 
             log.info("✅ WebSocket mesajı başarıyla gönderildi: destination={}", dto.getDestination());
             return WebSocketSendResult.success();
 
-        } catch (WebSocketBrokerService.BrokerNotFoundException e) {
-            log.error("❌ WebSocket broker bulunamadı: {}", e.getMessage());
+        } catch (WebSocketService.WebSocketNotFoundException e) {
+            log.error("❌ WebSocket bulunamadı: {}", e.getMessage());
             return WebSocketSendResult.failure(e.getMessage());
         } catch (Exception e) {
             log.error("❌ WebSocket mesaj gönderme hatası: destination={}, error={}",
                     dto.getDestination(), e.getMessage(), e);
 
-            // Broker health durumunu güncelle
+            // WebSocket health durumunu güncelle
             try {
-                webSocketBrokerService.updateBrokerHealth(dto.getBroker(), WebSocketBrokerEntity.HealthStatus.ERROR);
+                webSocketService.updateHealth(dto.getWebsocket(), WebSocketEntity.HealthStatus.ERROR);
             } catch (Exception ignored) {
-                // Broker bulunamadıysa ignore et
+                // WebSocket bulunamadıysa ignore et
             }
 
             return WebSocketSendResult.failure("WebSocket gönderim hatası: " + e.getMessage());

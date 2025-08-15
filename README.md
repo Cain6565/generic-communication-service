@@ -1366,7 +1366,7 @@ docker run --name postgres-gcs \
 -- Opsiyonel: Tabloları manuel oluşturma
 \i src/main/resources/messages.sql
 \i src/main/resources/brocker.sql  
-\i src/main/resources/websocket_brokers.sql
+\i src/main/resources/websocket.sql
 ```
 
 ### 2. RabbitMQ Kurulumu (Opsiyonel)

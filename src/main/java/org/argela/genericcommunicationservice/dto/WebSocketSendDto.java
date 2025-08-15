@@ -19,12 +19,12 @@ import java.util.Map;
 public class WebSocketSendDto {
 
     @Schema(
-            description = "Hedef WebSocket broker key'i",
+            description = "Hedef WebSocket key'i (database'deki key alanı)",
             example = "websocket-local",
             required = true
     )
-    @NotBlank(message = "Broker key boş olamaz")
-    private String broker;
+    @NotBlank(message = "WebSocket key boş olamaz")
+    private String websocket;  // broker → websocket (daha net)
 
     @Schema(
             description = "STOMP destination path'i",

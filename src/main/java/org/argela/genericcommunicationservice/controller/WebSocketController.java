@@ -13,7 +13,7 @@ import org.argela.genericcommunicationservice.entity.MessageEntity;
 import org.argela.genericcommunicationservice.enums.MessageStatus;
 import org.argela.genericcommunicationservice.enums.ProtocolType;
 import org.argela.genericcommunicationservice.service.MessageService;
-import org.argela.genericcommunicationservice.service.websocket.WebSocketBrokerService;
+import org.argela.genericcommunicationservice.service.websocket.WebSocketService;
 import org.argela.genericcommunicationservice.service.websocket.WebSocketSender;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -32,7 +32,7 @@ import java.util.Map;
 public class WebSocketController {
 
     private final MessageService messageService;
-    private final WebSocketBrokerService webSocketBrokerService;
+    private final WebSocketService webSocketService;
     private final WebSocketSender webSocketSender;
 
     @PostMapping("/publish")
@@ -46,7 +46,7 @@ public class WebSocketController {
                                             name = "Topic Broadcast",
                                             value = """
                                    {
-                                     "broker": "websocket-local",
+                                     "websocket": "websocket-local",
                                      "destination": "/topic/notifications",
                                      "headers": {
                                        "message-type": "system-notification",
@@ -63,7 +63,7 @@ public class WebSocketController {
                                             name = "User-specific Message",
                                             value = """
                                    {
-                                     "broker": "websocket-local",
+                                     "websocket": "websocket-local",
                                      "destination": "/user/notifications",
                                      "headers": {
                                        "userId": "123",
@@ -79,7 +79,7 @@ public class WebSocketController {
                                             name = "Chat Message",
                                             value = """
                                    {
-                                     "broker": "websocket-local",
+                                     "websocket": "websocket-local",
                                      "destination": "/topic/chat/room-1",
                                      "headers": {
                                        "chat-room": "room-1",
@@ -97,9 +97,9 @@ public class WebSocketController {
             ))
     public ResponseEntity<MessageEntity> publish(@Valid @RequestBody WebSocketSendDto dto) {
 
-        // Default broker
-        String brokerKey = dto.getBroker() != null ? dto.getBroker() : "websocket-local";
-        dto.setBroker(brokerKey);
+        // Default websocket
+        String websocketKey = dto.getWebsocket() != null ? dto.getWebsocket() : "websocket-local";
+        dto.setWebsocket(websocketKey);
 
         // 1️⃣ İlk kayıt - QUEUED status ile
         MessageEntity savedMessage = messageService.saveWebSocketMessage(dto, MessageStatus.QUEUED);
@@ -137,71 +137,71 @@ public class WebSocketController {
         return ResponseEntity.ok(messageService.getMessagesByProtocol(ProtocolType.WEBSOCKET.name(), pageable));
     }
 
-    // === 🏗️ BROKER YÖNETİMİ ===
+    // === 🏗️ WEBSOCKET YÖNETİMİ ===
 
-    @GetMapping("/brokers")
-    @Operation(summary = "📋 WebSocket broker'larını listele",
-            description = "Database'deki tüm aktif WebSocket broker'larını listeler")
-    public ResponseEntity<Map<String, Object>> listBrokers() {
+    @GetMapping("/websockets")
+    @Operation(summary = "📋 WebSocket'leri listele",
+            description = "Database'deki tüm aktif WebSocket'leri listeler")
+    public ResponseEntity<Map<String, Object>> listWebSockets() {
         try {
             Map<String, Object> result = Map.of(
-                    "brokers", webSocketBrokerService.listActiveBrokers().stream()
-                            .map(broker -> Map.of(
-                                    "brokerKey", broker.getBrokerKey(),
-                                    "endpointUrl", broker.getEndpointUrl(),
-                                    "protocolType", broker.getProtocolType(),
-                                    "maxConnections", broker.getMaxConnections(),
-                                    "isPrimary", broker.getIsPrimary(),
-                                    "healthStatus", broker.getHealthStatus().name(),
-                                    "lastHealthCheck", broker.getLastHealthCheck()
+                    "websockets", webSocketService.listActive().stream()
+                            .map(ws -> Map.of(
+                                    "key", ws.getKey(),
+                                    "endpointUrl", ws.getEndpointUrl(),
+                                    "protocolType", ws.getProtocolType(),
+                                    "maxConnections", ws.getMaxConnections(),
+                                    "isPrimary", ws.getIsPrimary(),
+                                    "healthStatus", ws.getHealthStatus().name(),
+                                    "lastHealthCheck", ws.getLastHealthCheck()
                             )).toList(),
-                    "statistics", webSocketBrokerService.getBrokerStatistics()
+                    "statistics", webSocketService.getStatistics()
             );
             return ResponseEntity.ok(result);
         } catch (Exception e) {
-            log.error("❌ WebSocket broker listeleme hatası: {}", e.getMessage(), e);
+            log.error("❌ WebSocket listeleme hatası: {}", e.getMessage(), e);
             return ResponseEntity.ok(Map.of(
-                    "error", "WebSocket broker listeleme hatası: " + e.getMessage(),
-                    "brokers", Map.of(),
-                    "statistics", Map.of("totalBrokers", 0)
+                    "error", "WebSocket listeleme hatası: " + e.getMessage(),
+                    "websockets", Map.of(),
+                    "statistics", Map.of("totalWebSockets", 0)
             ));
         }
     }
 
-    @GetMapping("/brokers/{brokerKey}/status")
-    @Operation(summary = "🔍 WebSocket broker durumu kontrol et")
-    public ResponseEntity<Map<String, Object>> getBrokerStatus(@PathVariable String brokerKey) {
+    @GetMapping("/websockets/{key}/status")
+    @Operation(summary = "🔍 WebSocket durumu kontrol et")
+    public ResponseEntity<Map<String, Object>> getWebSocketStatus(@PathVariable String key) {
         try {
-            webSocketBrokerService.findActiveBrokerByKey(brokerKey);
+            webSocketService.findActiveByKey(key);
 
             return ResponseEntity.ok(Map.of(
-                    "brokerKey", brokerKey,
+                    "key", key,
                     "available", true,
-                    "isPrimary", "websocket-local".equals(brokerKey),
+                    "isPrimary", "websocket-local".equals(key),
                     "timestamp", java.time.Instant.now(),
                     "status", "ONLINE",
                     "protocol", "WebSocket/STOMP"
             ));
 
-        } catch (WebSocketBrokerService.BrokerNotFoundException e) {
+        } catch (WebSocketService.WebSocketNotFoundException e) {
             return ResponseEntity.notFound().build();
         }
     }
 
-    @GetMapping("/brokers/available")
-    @Operation(summary = "📝 Kullanılabilir WebSocket broker listesi")
-    public ResponseEntity<Map<String, Object>> getAvailableBrokers() {
+    @GetMapping("/websockets/available")
+    @Operation(summary = "📝 Kullanılabilir WebSocket listesi")
+    public ResponseEntity<Map<String, Object>> getAvailableWebSockets() {
         return ResponseEntity.ok(Map.of(
-                "availableBrokers", webSocketBrokerService.getAvailableBrokerKeys(),
-                "defaultBroker", "websocket-local",
-                "total", webSocketBrokerService.getAvailableBrokerKeys().size(),
+                "availableWebSockets", webSocketService.getAvailableKeys(),
+                "defaultWebSocket", "websocket-local",
+                "total", webSocketService.getAvailableKeys().size(),
                 "protocol", "WebSocket/STOMP"
         ));
     }
 
-    @GetMapping("/brokers/stats")
-    @Operation(summary = "📊 WebSocket broker istatistikleri")
-    public ResponseEntity<Map<String, Object>> getBrokerStats() {
-        return ResponseEntity.ok(webSocketBrokerService.getBrokerStatistics());
+    @GetMapping("/websockets/stats")
+    @Operation(summary = "📊 WebSocket istatistikleri")
+    public ResponseEntity<Map<String, Object>> getWebSocketStats() {
+        return ResponseEntity.ok(webSocketService.getStatistics());
     }
 }

@@ -867,7 +867,7 @@
     async function testWebSocketBroadcast() {
         try {
             const testData = {
-                broker: "websocket-local",
+                websocket: "websocket-local",  // broker → websocket
                 destination: "/topic/notifications",
                 headers: {
                     "message-type": "system-notification",
@@ -908,7 +908,7 @@
     async function testWebSocketUser() {
         try {
             const testData = {
-                broker: "websocket-local",
+                websocket: "websocket-local",  // broker → websocket
                 destination: "/user/notifications",
                 headers: {
                     "userId": "123",
@@ -950,7 +950,7 @@
     async function testWebSocketChat() {
         try {
             const testData = {
-                broker: "websocket-local",
+                websocket: "websocket-local",  // broker → websocket
                 destination: "/topic/chat/room-dashboard",
                 headers: {
                     "chat-room": "room-dashboard",

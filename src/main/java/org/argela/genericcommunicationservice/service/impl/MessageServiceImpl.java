@@ -90,12 +90,12 @@ public class MessageServiceImpl implements MessageService {
 
         // WebSocket mesajını HTTP-benzeri kanonik forma map'le
         entity.setMethod("SEND");
-        entity.setUrl(String.format("websocket://%s%s", dto.getBroker(), dto.getDestination()));
+        entity.setUrl(String.format("websocket://%s%s", dto.getWebsocket(), dto.getDestination()));
         entity.setVersion("STOMP/1.2");
 
         // Headers - WebSocket meta bilgilerini koy
         Map<String, String> headers = new HashMap<>();
-        headers.put("broker", dto.getBroker());
+        headers.put("websocket", dto.getWebsocket());  // broker → websocket
         headers.put("destination", dto.getDestination());
         if (dto.getMessageType() != null && !dto.getMessageType().trim().isEmpty()) {
             headers.put("message-type", dto.getMessageType());

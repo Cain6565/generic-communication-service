@@ -12,20 +12,21 @@ import java.time.Instant;
 import java.util.Map;
 
 /**
- * WebSocket Broker entity - Database'de WebSocket broker'larını tutmak için
+ * WebSocket Entity - Database'de WebSocket endpoint'lerini tutmak için
+ * Tablo adı: websocket (sadeleştirilmiş)
  */
 @Entity
-@Table(name = "websocket_brokers")
+@Table(name = "websocket")
 @Getter
 @Setter
-public class WebSocketBrokerEntity {
+public class WebSocketEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "broker_key", unique = true, nullable = false, length = 50)
-    private String brokerKey;
+    @Column(name = "key", unique = true, nullable = false, length = 50)
+    private String key;
 
     @Column(name = "endpoint_url", nullable = false)
     private String endpointUrl;
